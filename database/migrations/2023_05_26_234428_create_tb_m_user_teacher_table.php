@@ -21,7 +21,7 @@ return new class extends Migration
             $table->enum('gender_mut',['L','P']);
             $table->text('alamat_mut');
             $table->bigInteger('notelp_mut');
-            $table->string('email_mut');
+            $table->string('email');
             $table->enum('status_mut',['tetap','honorer']);
             $table->string('foto_mut')->nullable();
             $table->enum('role_mut',['admin','guru']);

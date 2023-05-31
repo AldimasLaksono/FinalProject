@@ -12,16 +12,28 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $primaryKey = 'id_mus';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'id_mus',
+        'nis',
+        'id_tc',
+        'name_mus',
+        'ttl_mus',
+        'gender_mus',
+        'alamat_mus',
+        'notelp_mus',
         'email',
+        'foto_mus',
         'password',
+        'status_mus',
     ];
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -42,4 +54,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function setPasswordAttribute($password){
+        $this->attributes['password']=encrypt($password);
+    }
 }

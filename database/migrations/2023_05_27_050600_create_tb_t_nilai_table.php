@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('tb_t_nilai', function (Blueprint $table) {
             $table->id('id_tn');
-            $table->unsignedBigInteger('id_tup');
-            $table->foreign('id_tup')->references('id_tup')->on('tb_t_uptugas');
+            $table->unsignedBigInteger('id_tu');
+            $table->foreign('id_tu')->references('id_tu')->on('tb_t_tugas');
             $table->integer('nilai_tn');
             $table->string('description_tn');
             $table->timestamps();

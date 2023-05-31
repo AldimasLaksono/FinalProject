@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('gender_mus',['L','P']);
             $table->text('alamat_mus');
             $table->bigInteger('notelp_mus');
-            $table->string('email_mus');
+            $table->string('email');
             $table->string('foto_mus')->nullable();
             $table->text('password');
             $table->enum('status_mus',['active','deactive']);

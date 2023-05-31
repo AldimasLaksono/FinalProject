@@ -1,0 +1,12 @@
+.button-container {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-update {
+    margin-right: 10px;
+}
+
+.btn-hapus {
+    margin-left: 10px;
+}
