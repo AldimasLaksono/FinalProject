@@ -9,9 +9,14 @@ class Presensi extends Model
 {
     use HasFactory;
 
-    //definiskan tabel secara manual
     protected $table = 'tb_t_presensi';
-    protected $primaryKey = 'id_tp';
 
-    protected $fillable = ['id_mus', 'status', 'latitude', 'longitude'];
+    protected $fillable = [
+        'id_tp',
+        'id_mus',
+        'status',
+        'tanggal',
+        'latitude',
+        'longitude'
+    ];
 }

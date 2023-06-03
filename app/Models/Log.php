@@ -11,5 +11,5 @@ class Log extends Model
 
     protected $table = 'tb_log';
 
-    protected $fillable = ['module','action','useraccess'];
+    protected $fillable = ['module', 'action', 'useraccess'];
 }

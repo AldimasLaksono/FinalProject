@@ -1,0 +1,1409 @@
+{
+	"info": {
+		"_postman_id": "a9ed7a58-dcfc-403e-90e3-7cf182be0646",
+		"name": "API FP My School",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26327085"
+	},
+	"item": [
+		{
+			"name": "ADMIN",
+			"item": [
+				{
+					"name": "Login Guru/Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\" : \"admin@admin.com\",\r\n    \"password\" : \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUxOTkzMTMsImV4cCI6MTY4NTIwNjUxM30.-hqa3YwiyVYc503gKU9oBext2GzSe-XRcC0wSzPP7Cg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nis",
+									"value": "2122490",
+									"type": "text"
+								},
+								{
+									"key": "name_mus",
+									"value": "Lestari",
+									"type": "text"
+								},
+								{
+									"key": "ttl_mus",
+									"value": "Bogor, 17 November 2002",
+									"type": "text"
+								},
+								{
+									"key": "gender_mus",
+									"value": "P",
+									"type": "text"
+								},
+								{
+									"key": "alamat_mus",
+									"value": "Jl. KH Agus Salim 16, Sabang, Menteng Jakarta Pusat",
+									"type": "text"
+								},
+								{
+									"key": "notelp_mus",
+									"value": "089789076655",
+									"type": "text"
+								},
+								{
+									"key": "email_mus",
+									"value": "lestari@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "lestari",
+									"type": "text"
+								},
+								{
+									"key": "status_mus",
+									"value": "active",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/create-student",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"create-student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUxOTkzMTMsImV4cCI6MTY4NTIwNjUxM30.-hqa3YwiyVYc503gKU9oBext2GzSe-XRcC0wSzPP7Cg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "nis",
+									"value": "2122490",
+									"type": "text"
+								},
+								{
+									"key": "name_mus",
+									"value": "Lestari",
+									"type": "text"
+								},
+								{
+									"key": "ttl_mus",
+									"value": "Bogor, 17 November 2002",
+									"type": "text"
+								},
+								{
+									"key": "gender_mus",
+									"value": "P",
+									"type": "text"
+								},
+								{
+									"key": "alamat_mus",
+									"value": "Jl. KH Agus Salim 16, Sabang, Menteng Jakarta Pusat",
+									"type": "text"
+								},
+								{
+									"key": "notelp_mus",
+									"value": "089789076655",
+									"type": "text"
+								},
+								{
+									"key": "email_mus",
+									"value": "lestari@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "lestari",
+									"type": "text"
+								},
+								{
+									"key": "status_mus",
+									"value": "active",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/create-student",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"create-student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tambah Jurusan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUxOTkzMTMsImV4cCI6MTY4NTIwNjUxM30.-hqa3YwiyVYc503gKU9oBext2GzSe-XRcC0wSzPP7Cg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_mj\" : \"Bahasa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/create-jurusan",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"create-jurusan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Jurusan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUyMDUzMjIsImV4cCI6MTY4NTIxMjUyMn0.wG1UbHamc8T09wO5_sg12wthYxJ2B74LIbJFf_CQwOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_mj\" : \"Ilmu Pengetahuan Sosial\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/update-jurusan/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"update-jurusan",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Jurusan",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUxOTkzMTMsImV4cCI6MTY4NTIwNjUxM30.-hqa3YwiyVYc503gKU9oBext2GzSe-XRcC0wSzPP7Cg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/delete-jurusan/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"delete-jurusan",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Jurusan",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUyMDUzMjIsImV4cCI6MTY4NTIxMjUyMn0.wG1UbHamc8T09wO5_sg12wthYxJ2B74LIbJFf_CQwOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/show-jurusan",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"show-jurusan"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tambah Kelas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsInJvbGUiOiJhZG1pbiIsImlkX3RtdSI6MSwiaWF0IjoxNjg0OTM5OTc1LCJleHAiOjE2ODQ5NDcxNzV9.YDikyB-RFOHD8-btOLIaF8kEmC8Q7xW4okenj94IVQ0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_kls\" : \"10 O-6\",\r\n    \"id_tmj\" : \"1\",\r\n    \"id_tmse\" :\"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/create-kelas",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"create-kelas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Kelas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsInJvbGUiOiJhZG1pbiIsImlkX3RtdSI6MSwiaWF0IjoxNjg0NzY2NzE1LCJleHAiOjE2ODQ3NzM5MTV9.-s4HKCJtSmDzNP70cNJXx18N-eVsV4OhnD4G8QOSPU0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_kls\" : \"12 A2\",\r\n    \"id_tmj\" : \"1\",\r\n    \"id_tmse\" :\"6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/update-kelas/3",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"update-kelas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Kelas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsInJvbGUiOiJhZG1pbiIsImlkX3RtdSI6MSwiaWF0IjoxNjg0NzY2NzE1LCJleHAiOjE2ODQ3NzM5MTV9.-s4HKCJtSmDzNP70cNJXx18N-eVsV4OhnD4G8QOSPU0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/delete-kelas/11",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"delete-kelas",
+								"11"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Kelas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsInJvbGUiOiJhZG1pbiIsImlkX3RtdSI6MSwiaWF0IjoxNjg0NzY2NzE1LCJleHAiOjE2ODQ3NzM5MTV9.-s4HKCJtSmDzNP70cNJXx18N-eVsV4OhnD4G8QOSPU0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/show-kelas",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"show-kelas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tambah Periode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUxOTkzMTMsImV4cCI6MTY4NTIwNjUxM30.-hqa3YwiyVYc503gKU9oBext2GzSe-XRcC0wSzPP7Cg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_mper\" : \"2006/2007\",\r\n    \"status_mp\" : \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/create-periode",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"create-periode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Periode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUxOTkzMTMsImV4cCI6MTY4NTIwNjUxM30.-hqa3YwiyVYc503gKU9oBext2GzSe-XRcC0wSzPP7Cg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_mper\" : \"2006/2007\",\r\n    \"status_mp\" : \"0\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/update-periode/6",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"update-periode",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Periode",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUxOTkzMTMsImV4cCI6MTY4NTIwNjUxM30.-hqa3YwiyVYc503gKU9oBext2GzSe-XRcC0wSzPP7Cg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/delete-periode/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"delete-periode",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Periode",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lIjoiQWRtaW5pc3RyYXRvciIsInJvbGUiOiJhZG1pbiIsImlkX3RtdSI6MSwiaWF0IjoxNjg0NjU4NzkxLCJleHAiOjE2ODQ2NjU5OTF9.LNguqcHyLO6n2QHzFUNBiOQhGaR_0Nbh0V7EWlE1CKs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/show-periode",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"show-periode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUyMDUzMjIsImV4cCI6MTY4NTIxMjUyMn0.wG1UbHamc8T09wO5_sg12wthYxJ2B74LIbJFf_CQwOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/delete_student/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"delete_student",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Student",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUyMDUzMjIsImV4cCI6MTY4NTIxMjUyMn0.wG1UbHamc8T09wO5_sg12wthYxJ2B74LIbJFf_CQwOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/show_student/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"show_student",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Mapel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211dCI6IkFkbWluaXN0cmF0b3IiLCJyb2xlX211dCI6ImFkbWluIiwiaWRfbXV0IjoxLCJpYXQiOjE2ODUyMDUzMjIsImV4cCI6MTY4NTIxMjUyMn0.wG1UbHamc8T09wO5_sg12wthYxJ2B74LIbJFf_CQwOY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name_mm\" : \"Kimia\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/admin/create-mapel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"admin",
+								"create-mapel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email_mus\" : \"Aldimas@gmail.com\",\r\n    \"password\" : \"aldimas\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login_student",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login_student"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "STUDENT",
+			"item": [
+				{
+					"name": "Update Foto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NTM5NzU3LCJleHAiOjE2ODU1NDY5NTd9.PIBP4RXSuAtlzukogvho9CurHHC7VY6-8PEYDw6fv_E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "foto_mus",
+									"contentType": "",
+									"type": "file",
+									"src": "/C:/Users/risma/Downloads/suho.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/update-foto",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"update-foto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NTM5NzU3LCJleHAiOjE2ODU1NDY5NTd9.PIBP4RXSuAtlzukogvho9CurHHC7VY6-8PEYDw6fv_E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nis\" : \"677697645356\",\r\n    \"password\" : \"aldimasho\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/login",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Profil",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NDU0OTAxLCJleHAiOjE2ODU0NjIxMDF9.XTqjiOyFw2V4bUkOymMIBRzk1_x5vQS7xBm9NCbv0sA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/profil",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"profil"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NDYyNzcwLCJleHAiOjE2ODU0Njk5NzB9.bsLxCfNN8DhZ0eoGEtngv2xU0EoFKPw_cpfXjSftxcQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\" : \"aldimasho\",\r\n    \"confirmation_password\" : \"aldimasho\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/change-password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save Presensi",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NDYyNzcwLCJleHAiOjE2ODU0Njk5NzB9.bsLxCfNN8DhZ0eoGEtngv2xU0EoFKPw_cpfXjSftxcQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "status",
+									"value": "MASUK",
+									"type": "text"
+								},
+								{
+									"key": "latitude",
+									"value": "-6.323386",
+									"type": "text"
+								},
+								{
+									"key": "longitude",
+									"value": "107.30056",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/save-presensi",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"save-presensi"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show All Mapel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NDYyMTQzLCJleHAiOjE2ODU0NjkzNDN9.HSg5gIINe4FEmMRCSLFwchgzg2G7lOxXb6YDaKHdbgQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/show-all-mapel",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"show-all-mapel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show List Materi By Mapel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NDU2NTI1LCJleHAiOjE2ODU0NjM3MjV9.6_nlKYJ0tRhlDION6dTyrS08h2-Zcny0puOpu67Qz-4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/show-list-materi/2",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"show-list-materi",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Materi",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NTM5NzU3LCJleHAiOjE2ODU1NDY5NTd9.PIBP4RXSuAtlzukogvho9CurHHC7VY6-8PEYDw6fv_E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/detail-materi/4",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"detail-materi",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Tugas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NTM5NzU3LCJleHAiOjE2ODU1NDY5NTd9.PIBP4RXSuAtlzukogvho9CurHHC7VY6-8PEYDw6fv_E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "id_mt",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "desk_tj",
+									"value": "Hai ibu ini jawaban saya",
+									"type": "text"
+								},
+								{
+									"key": "file_tj",
+									"type": "file",
+									"src": "/C:/Users/risma/Downloads/21-39-1-SM.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/upload-tugas",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"upload-tugas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show Tugas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NTM5NzU3LCJleHAiOjE2ODU1NDY5NTd9.PIBP4RXSuAtlzukogvho9CurHHC7VY6-8PEYDw6fv_E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/show-tugas",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"show-tugas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail Tugas",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NTM5NzU3LCJleHAiOjE2ODU1NDY5NTd9.PIBP4RXSuAtlzukogvho9CurHHC7VY6-8PEYDw6fv_E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/detail-tugas/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"detail-tugas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJuYW1lX211cyI6IkFsZGltYXMgbGFrc29ubyIsImlkX211cyI6MSwiaWF0IjoxNjg1NTM5NzU3LCJleHAiOjE2ODU1NDY5NTd9.PIBP4RXSuAtlzukogvho9CurHHC7VY6-8PEYDw6fv_E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

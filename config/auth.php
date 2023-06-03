@@ -40,6 +40,12 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        // Konfigurasi guard untuk pengguna kedua
+        // 'user_guru' => [
+        //     'driver' => 'session',
+        //     'provider' => 'user_guru',
+        // ],
     ],
 
     /*
@@ -68,6 +74,12 @@ return [
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
+        // ],
+
+        // Konfigurasi provider untuk pengguna kedua
+        // 'user_guru' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User_Guru::class,
         // ],
     ],
 

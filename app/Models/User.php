@@ -12,6 +12,8 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'users';
+
     protected $primaryKey = 'id_mus';
 
     /**
@@ -21,8 +23,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'id_mus',
-        'nis',
         'id_tc',
+        'nis',
         'name_mus',
         'ttl_mus',
         'gender_mus',
@@ -33,7 +35,6 @@ class User extends Authenticatable
         'password',
         'status_mus',
     ];
-
 
     /**
      * The attributes that should be hidden for serialization.
@@ -57,5 +58,29 @@ class User extends Authenticatable
 
     public function setPasswordAttribute($password){
         $this->attributes['password']=encrypt($password);
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
+    public function kelas()
+    {
+        return $this->belongsTo(Kelas::class, 'id_tc', 'id_tc');
+    }
+
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

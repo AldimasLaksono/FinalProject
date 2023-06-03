@@ -10,34 +10,34 @@
     </div>
 
     @if(session('cancelMessage'))
-    <div id="cancelAlert" class="alert alert-info">
-        {{ session('cancelMessage') }}
-    </div>
-@endif
+        <div id="cancelAlert" class="alert alert-info">
+            {{ session('cancelMessage') }}
+        </div>
+    @endif
 
-@if(session('success'))
-    <div id="successAlert" class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
+    @if(session('success'))
+        <div id="successAlert" class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    var cancelAlert = document.getElementById('cancelAlert');
-    var successAlert = document.getElementById('successAlert');
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var cancelAlert = document.getElementById('cancelAlert');
+        var successAlert = document.getElementById('successAlert');
 
-    // Menghilangkan pesan setelah 5 detik
-    setTimeout(function() {
-        if (cancelAlert) {
-            cancelAlert.style.display = 'none';
-        }
-        
-        if (successAlert) {
-            successAlert.style.display = 'none';
-        }
-    }, 5000);
-});
-</script>   
+        // Menghilangkan pesan setelah 5 detik
+        setTimeout(function() {
+            if (cancelAlert) {
+                cancelAlert.style.display = 'none';
+            }
+            
+            if (successAlert) {
+                successAlert.style.display = 'none';
+            }
+        }, 5000);
+    });
+    </script>   
 
     <div class="card-body">
         <div class="table-responsive">

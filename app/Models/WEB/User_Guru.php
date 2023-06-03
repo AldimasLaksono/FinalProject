@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\WEB;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+//use Illuminate\Foundation\Auth\User as Authenticatable;
+//use Illuminate\Contracts\Auth\Authenticatable;
+//use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Crypt;
 
-class User_Guru extends Model
+class User_Guru extends Model 
 {
     use HasFactory;
 

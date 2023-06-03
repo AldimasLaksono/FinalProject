@@ -1828,12 +1828,12 @@
 	 */
 	function _fnCompatOpts ( init )
 	{
-		_fnCompatMap( init, 'ordering',      'bSort' );
-		_fnCompatMap( init, 'orderMulti',    'bSortMulti' );
-		_fnCompatMap( init, 'orderClasses',  'bSortClasses' );
-		_fnCompatMap( init, 'orderCellsTop', 'bSortCellsTop' );
-		_fnCompatMap( init, 'order',         'aaSorting' );
-		_fnCompatMap( init, 'orderFixed',    'aaSortingFixed' );
+		// _fnCompatMap( init, 'ordering',      'bSort' );
+		// _fnCompatMap( init, 'orderMulti',    'bSortMulti' );
+		// _fnCompatMap( init, 'orderClasses',  'bSortClasses' );
+		// _fnCompatMap( init, 'orderCellsTop', 'bSortCellsTop' );
+		// _fnCompatMap( init, 'order',         'aaSorting' );
+		// _fnCompatMap( init, 'orderFixed',    'aaSortingFixed' );
 		_fnCompatMap( init, 'paging',        'bPaginate' );
 		_fnCompatMap( init, 'pagingType',    'sPaginationType' );
 		_fnCompatMap( init, 'pageLength',    'iDisplayLength' );

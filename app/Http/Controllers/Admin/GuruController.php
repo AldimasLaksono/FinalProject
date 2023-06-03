@@ -10,14 +10,23 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Rap2hpoutre\FastExcel\FastExcel;
 use App\Models\Log;
-use App\Models\User_Guru;
+use App\Models\WEB\User_Guru;
 use App\Models\tb_m_jabatan;
 
 class GuruController extends Controller
 {
-    public function inputform()
+    public function inputform(Request $request)
     {
-        return view('Data_Guru.input_guru');
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+        
+        return view('Data_Guru.input_guru', ['data' => $data]);
     }
 
     public function inputData(Request $request)
@@ -58,10 +67,11 @@ class GuruController extends Controller
         $guru->status = $request->input('status');
         $guru->save();
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Teacher',
             'action' => 'Tambah data user guru',
-            'useraccess' => 'Administrator'
+            'useraccess' => $user->name_mut
         ]);
 
         // Redirect ke halaman data siswa dengan pesan sukses
@@ -93,26 +103,45 @@ class GuruController extends Controller
             ]);
         }
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Teacher',
             'action' => 'Import data user guru',
-            'useraccess' => 'Administrator'
+            'useraccess' => $user->name_mut
         ]);
 
         session()->flash('success', 'Data berhasil diimpor dari file Excel.');
         return redirect()->back();
     }
 
-    public function show_guru()
+    public function show_guru(Request $request)
     {
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+
         $userTeacher = User_Guru::leftJoin('tb_m_jabatan', 'tb_m_user_teacher.id_mja', '=', 'tb_m_jabatan.id_mja')
             ->select('tb_m_user_teacher.*', 'tb_m_jabatan.name_mja')
             ->get();
-        return view('Data_Guru.show_guru', compact('userTeacher'));
+        return view('Data_Guru.show_guru', compact('userTeacher'), ['data' => $data]);
     }
 
-    public function updateform_guru($id_mut)
+    public function updateform_guru(Request $request, $id_mut)
     {
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+
         $userTeacher = DB::table('tb_m_user_teacher')
             ->where('id_mut', $id_mut)
             ->first();
@@ -121,7 +150,7 @@ class GuruController extends Controller
 
         $userTeacher->password = $decryptedPassword;
 
-        return view('Data_Guru.update_guru', compact('userTeacher'));
+        return view('Data_Guru.update_guru', compact('userTeacher'), ['data' => $data]);
     }
 
     public function updateData_guru(Request $request, $id_mut)
@@ -143,10 +172,11 @@ class GuruController extends Controller
 
         $userTeacher->save();
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Teacher',
             'action' => 'Update data user guru',
-            'useraccess' => 'Administrator'
+            'useraccess' => $user->name_mut
         ]);
 
         // session()->flash('success', 'Data siswa berhasil diperbarui');
@@ -155,13 +185,13 @@ class GuruController extends Controller
         if ($request->has('cancelButton')) {
             session()->flash('cancelMessage', 'Pembaruan data dibatalkan');
         } else {
-            session()->flash('success', 'Data siswa berhasil diperbarui');
+            session()->flash('success', 'Data berhasil diperbarui');
         }
 
         return redirect()->route('data_guru');
     }
 
-    public function deleteData_guru($id_mut)
+    public function deleteData_guru(Request $request, $id_mut)
     {
         $userTeacher = User_Guru::find($id_mut);
 
@@ -170,6 +200,13 @@ class GuruController extends Controller
         }
 
         $userTeacher->delete();
+
+        $user = $request->session()->get('user');
+        Log::create([
+            'module' => 'Data_Teacher',
+            'action' => 'Delete data user guru',
+            'useraccess' => $user->name_mut
+        ]);
 
         return redirect()->route('data_guru')->with('success', 'Data berhasil dihapus.');
     }

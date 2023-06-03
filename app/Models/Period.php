@@ -9,9 +9,10 @@ class Period extends Model
 {
     use HasFactory;
 
-    //definiskan tabel secara manual
     protected $table = 'tb_m_period';
-    protected $primaryKey = 'id_mper';
 
-    protected $fillable = ['name_mper','status_mp'];
+    public function periodClasses()
+    {
+        return $this->hasMany('App\Models\PeriodClass', 'id_mper', 'id_mper');
+    }
 }

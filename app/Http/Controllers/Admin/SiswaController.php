@@ -9,22 +9,40 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Rap2hpoutre\FastExcel\FastExcel;
 use App\Models\Log;
-use App\Models\User;
+use App\Models\WEB\User;
 
 class SiswaController extends Controller
 {
-    public function show_data()
+    public function show_data(Request $request)
     {
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+
         $userStudent = User::leftJoin('tb_t_class', 'users.id_tc', '=', 'tb_t_class.id_tc')
             ->select('users.*', 'tb_t_class.*')
             ->get();
             
-        return view('Data_Siswa.show_siswa', compact('userStudent'));
+        return view('Data_Siswa.show_siswa', compact('userStudent'), ['data' => $data]);
     }
 
-    public function inputform()
+    public function inputform(Request $request)
     {
-        return view('Data_Siswa.input_data');
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+
+        return view('Data_Siswa.input_data', ['data' => $data]);
     }
 
     public function inputData(Request $request)
@@ -61,10 +79,11 @@ class SiswaController extends Controller
         $siswa->status_mus = $request->input('status_mus');
         $siswa->save();
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Student',
             'action' => 'Tambah data user siswa',
-            'useraccess' => 'Administrator'
+            'useraccess' => $user->name_mut
         ]);
 
         // Redirect ke halaman data siswa dengan pesan sukses
@@ -72,15 +91,24 @@ class SiswaController extends Controller
         return redirect()->route('input_data');
     }
 
-    public function updateform($id_mus)
+    public function updateform(Request $request, $id_mus)
     {
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+
         $userStudent = DB::table('users')
             ->where('id_mus', $id_mus)
             ->first();
 
         $password = $userStudent->password ? decrypt($userStudent->password) : null;
 
-        return view('Data_Siswa.update_siswa', compact('userStudent', 'password'));
+        return view('Data_Siswa.update_siswa', compact('userStudent', 'password'), ['data' => $data]);
     }
 
     public function updateData(Request $request, $id_mus)
@@ -100,10 +128,11 @@ class SiswaController extends Controller
 
         $userStudent->save();
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Student',
             'action' => 'Update data user siswa',
-            'useraccess' => 'Administrator'
+            'useraccess' => $user->name_mut
         ]);
 
         // session()->flash('success', 'Data siswa berhasil diperbarui');
@@ -139,17 +168,18 @@ class SiswaController extends Controller
             ]);
         }
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Student',
             'action' => 'Import data user siswa',
-            'useraccess' => 'Administrator'
+            'useraccess' => $user->name_mut
         ]);
 
         session()->flash('success', 'Data berhasil diimpor dari file Excel.');
         return redirect()->back();
     }
 
-    public function deleteData($id_mus)
+    public function deleteData(Request $request, $id_mus)
     {
         $userStudent = User::find($id_mus);
 
@@ -158,6 +188,13 @@ class SiswaController extends Controller
         }
 
         $userStudent->delete();
+
+        $user = $request->session()->get('user');
+        Log::create([
+            'module' => 'Data_Student',
+            'action' => 'Delete data user siswa',
+            'useraccess' => $user->name_mut
+        ]);
 
         return redirect()->route('data_siswa')->with('success', 'Data berhasil dihapus.');
     }

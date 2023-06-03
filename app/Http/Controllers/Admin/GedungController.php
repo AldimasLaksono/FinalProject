@@ -6,16 +6,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
-use App\Models\Gedung;
-use App\Models\Log;
+use App\Models\WEB\Gedung;
+use App\Models\WEB\Log;
 
 class GedungController extends Controller
 {
-    public function show_gedung()
+    public function show_gedung(Request $request)
     {
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+
         $gedung = Gedung::all();
 
-        return view('Data_Ruangan.gedung', compact('gedung'));
+        return view('Data_Ruangan.gedung', compact('gedung'), ['data' => $data]);
     }
 
     public function input_gedung(Request $request)
@@ -34,10 +43,11 @@ class GedungController extends Controller
         $gedung->name_mg = $request->input('name_mg');
         $gedung->save();
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Ruang',
             'action' => 'Tambah Gedung',
-            'useraccess' => 'Administrator'
+            'useraccess' => $user->name_mut
         ]);
 
         // Redirect ke halaman data siswa dengan pesan sukses
@@ -45,7 +55,7 @@ class GedungController extends Controller
         return redirect()->route('show_gedung');
     }
 
-    public function delete_gedung($id_mg)
+    public function delete_gedung(Request $request, $id_mg)
     {
         $gedung = Gedung::find($id_mg);
 
@@ -54,6 +64,13 @@ class GedungController extends Controller
         }
 
         $gedung->delete();
+
+        $user = $request->session()->get('user');
+        Log::create([
+            'module' => 'Data_Ruang',
+            'action' => 'Delete Gedung',
+            'useraccess' => $user->name_mut
+        ]);
 
         return redirect()->route('show_gedung')->with('success', 'Data berhasil dihapus.');
     }

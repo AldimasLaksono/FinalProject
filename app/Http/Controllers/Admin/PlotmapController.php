@@ -7,13 +7,22 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-use App\Models\Plotmap;
+use App\Models\WEB\Plotmap;
 use App\Models\Log;
 
 class PlotmapController extends Controller
 {
-    public function show_datatm()
+    public function show_datatm(Request $request)
     {
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+
         $datatm = DB::table('tb_t_mapel')
         ->join('tb_t_period_class', 'tb_t_mapel.id_tpc', '=', 'tb_t_period_class.id_tpc')
         ->join('tb_m_mapel', 'tb_t_mapel.id_mm', '=', 'tb_m_mapel.id_mm')
@@ -25,7 +34,7 @@ class PlotmapController extends Controller
             'tb_m_user_teacher.*')
         ->get();
 
-        return view('Data_Akademik.ploting_mapel', compact('datatm'));
+        return view('Data_Akademik.ploting_mapel', compact('datatm'), ['data' => $data]);
     }
 
     public function input_datatm(Request $request)
@@ -50,10 +59,11 @@ class PlotmapController extends Controller
         $plotmap->kode_mm_tm = $request->input('kode_mm_tm');
         $plotmap->save();
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Akademik',
             'action' => 'Tambah data Ploting mapel',
-            'useraccess' => 'Administrator'
+            'useraccess' => $user->name_mut
         ]);
 
         // Redirect ke halaman data siswa dengan pesan sukses
@@ -61,13 +71,22 @@ class PlotmapController extends Controller
         return redirect()->route('show_datatm');
     }
 
-    public function updateform_plotmap($id_tm)
+    public function updateform_plotmap(Request $request, $id_tm)
     {
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+
         $datatm = DB::table('tb_t_mapel')
             ->where('id_tm', $id_tm)
             ->first();
 
-        return view('Data_Akademik.update_ploting_mapel', compact('datatm'));
+        return view('Data_Akademik.update_ploting_mapel', compact('datatm'), ['data' => $data]);
     }
 
     public function updateData_plotmap(Request $request, $id_tm)
@@ -80,10 +99,11 @@ class PlotmapController extends Controller
 
         $datatm->save();
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Akademik',
-            'action' => 'Update data ploting mapel',
-            'useraccess' => 'Administrator'
+            'action' => 'Update data Ploting mapel',
+            'useraccess' => $user->name_mut
         ]);
 
         // session()->flash('success', 'Data siswa berhasil diperbarui');
@@ -98,7 +118,7 @@ class PlotmapController extends Controller
         return redirect()->route('show_datatm');
     }
 
-    public function delete_datatm($id_tm)
+    public function delete_datatm(Request $request, $id_tm)
     {
         $datatm = Plotmap::find($id_tm);
 
@@ -107,6 +127,13 @@ class PlotmapController extends Controller
         }
 
         $datatm->delete();
+
+        $user = $request->session()->get('user');
+        Log::create([
+            'module' => 'Data_Akademik',
+            'action' => 'Delete data Ploting mapel',
+            'useraccess' => $user->name_mut
+        ]);
 
         return redirect()->route('show_datatm')->with('success', 'Data berhasil dihapus.');
     }

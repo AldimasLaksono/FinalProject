@@ -9,9 +9,15 @@ class Mapel extends Model
 {
     use HasFactory;
 
-    //definiskan tabel secara manual
     protected $table = 'tb_m_mapel';
-    protected $primaryKey = 'id_mm';
 
-    protected $fillable = ['id_mm', 'name_mm'];
+    public function mapelClasses()
+    {
+        return $this->hasMany(MapelClass::class, 'id_mm', 'id_mm');
+    }
+
+    public function materi()
+    {
+        return $this->hasManyThrough(Materi::class, MapelClass::class, 'id_mm', 'id_tm');
+    }
 }

@@ -7,13 +7,22 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
-use App\Models\PeriodClass;
+use App\Models\WEB\PeriodClass;
 use App\Models\Log;
 
 class PeriodClassController extends Controller
 {
-    public function show_perclass()
+    public function show_perclass(Request $request)
     {
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+
         $perclass = DB::table('tb_t_period_class')
         ->join('tb_m_period', 'tb_t_period_class.id_mper', '=', 'tb_m_period.id_mper')
         ->select(
@@ -21,7 +30,7 @@ class PeriodClassController extends Controller
             'tb_t_period_class.*')
         ->get();
 
-        return view('Data_Akademik.period_class', compact('perclass'));
+        return view('Data_Akademik.period_class', compact('perclass'), ['data' => $data]);
     }
 
     public function input_perclass(Request $request)
@@ -44,10 +53,11 @@ class PeriodClassController extends Controller
         $perclass->description_tpc = $request->input('description_tpc');
         $perclass->save();
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Akademik',
             'action' => 'Tambah data Ploting Class Period',
-            'useraccess' => 'Administrator'
+            'useraccess' => $user->name_mut
         ]);
 
         // Redirect ke halaman data siswa dengan pesan sukses
@@ -55,13 +65,22 @@ class PeriodClassController extends Controller
         return redirect()->route('show_perclass');
     }
 
-    public function updateform_perclass($id_tpc)
+    public function updateform_perclass(Request $request, $id_tpc)
     {
+        $user = $request->session()->get('user');
+        
+        // Mendapatkan nama user (name_mut)
+        $data = [
+            'name_mut' => $user->name_mut,
+            'foto_mut' => $user->foto_mut,
+            'role_mut' => $user->role_mut
+        ];
+
         $perclass = DB::table('tb_t_period_class')
             ->where('id_tpc', $id_tpc)
             ->first();
 
-        return view('Data_Akademik.update_period_class', compact('perclass'));
+        return view('Data_Akademik.update_period_class', compact('perclass'), ['data' => $data]);
     }
 
     public function updateData_perclass(Request $request, $id_tpc)
@@ -73,10 +92,11 @@ class PeriodClassController extends Controller
 
         $perclass->save();
 
+        $user = $request->session()->get('user');
         Log::create([
             'module' => 'Data_Akademik',
             'action' => 'Update data Ploting Class Period',
-            'useraccess' => 'Administrator'
+            'useraccess' => $user->name_mut
         ]);
 
         // session()->flash('success', 'Data siswa berhasil diperbarui');
@@ -91,7 +111,7 @@ class PeriodClassController extends Controller
         return redirect()->route('show_perclass');
     }
 
-    public function delete_perclass($id_tpc)
+    public function delete_perclass(Request $request, $id_tpc)
     {
         $perclass = PeriodClass::find($id_tpc);
 
@@ -100,6 +120,13 @@ class PeriodClassController extends Controller
         }
 
         $perclass->delete();
+
+        $user = $request->session()->get('user');
+        Log::create([
+            'module' => 'Data_Akademik',
+            'action' => 'Delete data Ploting Class Period',
+            'useraccess' => $user->name_mut
+        ]);
 
         return redirect()->route('show_perclass')->with('success', 'Data berhasil dihapus.');
     }
